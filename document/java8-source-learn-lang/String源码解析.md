@@ -16,4 +16,8 @@
     }
 
   上面的测试用例通过测试，表明：""对象与用String()构造出的对象不是同一对象；""对象与用String()构造出的对象的内容是相等的。
-###
+### 3 已char数组为参数的构造方法
+    public String(char value[]) {
+       this.value = Arrays.copyOf(value, value.length);
+    }
+该构造方法将char数组value复制一份（而不是将value的引用复制一份），构造出一个新的String的对象。
