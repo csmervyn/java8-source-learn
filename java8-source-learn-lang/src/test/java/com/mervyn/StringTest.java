@@ -15,9 +15,9 @@ public class StringTest {
     @Test
     public void testString1() {
         String original = "abc";
-        String imitation = new String(original);
-        Assert.assertFalse(original == imitation);
-        Assert.assertTrue(original.equals(imitation));
+        String current = new String(original);
+        Assert.assertFalse(original == current);
+        Assert.assertTrue(original.equals(current));
         System.out.println(original.hashCode());
     }
 
