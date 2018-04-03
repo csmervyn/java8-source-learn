@@ -13,6 +13,15 @@ public class StringTest {
     }
 
     @Test
+    public void testString1() {
+        String original = "abc";
+        String imitation = new String(original);
+        Assert.assertFalse(original == imitation);
+        Assert.assertTrue(original.equals(imitation));
+        System.out.println(original.hashCode());
+    }
+
+    @Test
     public void testString2 () {
         char[] charArray = {'a','b','c'};
         String str = new String(charArray);
