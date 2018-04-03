@@ -27,3 +27,25 @@
         char[] charArray = {'a','b','c'};
         String str = new String(charArray);
     }
+ ![image](https://raw.githubusercontent.com/csmervyn/java8-source-learn/master/image/java8-source-learn-lang/%E5%B7%B2char%E6%95%B0%E7%BB%84%E4%B8%BA%E5%8F%82%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.png)
+
+    public String(char value[], int offset, int count) {
+       if (offset < 0) {
+           throw new StringIndexOutOfBoundsException(offset);
+       }
+       if (count <= 0) {
+           if (count < 0) {
+               throw new StringIndexOutOfBoundsException(count);
+           }
+           if (offset <= value.length) {
+               this.value = "".value;
+               return;
+           }
+       }
+       // Note: offset or count might be near -1>>>1.
+       if (offset > value.length - count) {
+           throw new StringIndexOutOfBoundsException(offset + count);
+       }
+       this.value = Arrays.copyOfRange(value, offset, offset+count);
+    }
+该构造方法将char数组value从offset索引开始拷贝count个char字符（包含offset索引位置），构造出一个新的String对象。

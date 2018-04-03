@@ -17,4 +17,11 @@ public class StringTest {
         char[] charArray = {'a','b','c'};
         String str = new String(charArray);
     }
+
+    @Test
+    public void testString3 () {
+        char[] charArray = {'a','b','c','d'};
+        String str = new String(charArray,1,2);
+        Assert.assertTrue("bc".equals(str));
+    }
 }
