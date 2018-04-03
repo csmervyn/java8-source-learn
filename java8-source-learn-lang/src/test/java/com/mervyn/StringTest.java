@@ -11,4 +11,10 @@ public class StringTest {
         Assert.assertFalse(emptyStr == emptyStrCreatedByConstruct);
         Assert.assertTrue(emptyStr.equals(emptyStrCreatedByConstruct));
     }
+
+    @Test
+    public void testString2 () {
+        char[] charArray = {'a','b','c'};
+        String str = new String(charArray);
+    }
 }

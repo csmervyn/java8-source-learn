@@ -20,4 +20,10 @@
     public String(char value[]) {
        this.value = Arrays.copyOf(value, value.length);
     }
-该构造方法将char数组value复制一份（而不是将value的引用复制一份），构造出一个新的String的对象。
+该构造方法将char数组value复制一份（而不是将value的引用复制一份），构造出一个新的String的对象。通过下面的测试用例和内存分析图来说明：
+
+    @Test
+    public void testString2 () {
+        char[] charArray = {'a','b','c'};
+        String str = new String(charArray);
+    }
