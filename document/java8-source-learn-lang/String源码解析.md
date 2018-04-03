@@ -16,8 +16,9 @@
     }
 
   对象内存分析图：
-  ![image](https://raw.githubusercontent.com/csmervyn/java8-source-learn/master/image/java8-source-learn-lang/String%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.png)
   
+  ![image](https://raw.githubusercontent.com/csmervyn/java8-source-learn/master/image/java8-source-learn-lang/String%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.png)
+
   通过上面的测试用例和对象内存分析图，可以看出：""对象与用String()构造出的对象不是同一对象；""对象与用String()构造出的对象的内容是相等的。
 ### 2 以String为参数的构造方法
     public String(String original) {
