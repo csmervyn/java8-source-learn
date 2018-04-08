@@ -82,5 +82,5 @@
         Assert.assertTrue("bc".equals(str));
     }
 上面测试用例的对象内存分析图：
-![image]()    
+![image](https://raw.githubusercontent.com/csmervyn/java8-source-learn/master/image/java8-source-learn-lang/%E5%B7%B2char%E6%95%B0%E7%BB%84%E4%B8%BA%E5%8F%82%E6%95%B0%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%951-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.png)    
 
