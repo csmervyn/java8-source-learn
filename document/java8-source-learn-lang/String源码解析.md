@@ -216,3 +216,20 @@ byte数组从bytes从offset索引位置（包括offset位置）开始，的lengt
     }
 该方法是求当前String对象的子串。子串为截取从原始串的beginIndex索引位置开始（包含该beginIndex）到 endIndex为止（不包含
 endIndex位置）的字符串。
+## 5 trim()
+    public String trim() {
+        int len = value.length;
+        int st = 0;
+        char[] val = value;    /* avoid getfield opcode */
+
+        while ((st < len) && (val[st] <= ' ')) {
+            st++;
+        }
+        while ((st < len) && (val[len - 1] <= ' ')) {
+            len--;
+        }
+        return ((st > 0) || (len < value.length)) ? substring(st, len) : this;
+    }
+该方法返回一个去除原字符串两边小于‘ ’(空格)的子串（原字符串不变）。
+ 【阅读String源码的过程中，发现需要Object和Character源码的基础，于是打算先阅读Object类的源码，未完待续...】   
+    
