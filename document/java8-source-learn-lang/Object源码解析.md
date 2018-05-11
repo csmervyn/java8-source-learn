@@ -571,8 +571,8 @@ CloneNotSupportedException。如果要实现一个类对象的“深拷贝”，
       
     
 # 参考文献
-  [1] http://www.blogjava.net/nokiaguy/archive/2008/05/06/198711.html
-  [2] JoshuaBloch. Effective Java中文版.第2版[M]. 机械工业出版社, 2009.
+  * [1] http://www.blogjava.net/nokiaguy/archive/2008/05/06/198711.html
+  * [2] JoshuaBloch. Effective Java中文版.第2版[M]. 机械工业出版社, 2009.
 
 
   
