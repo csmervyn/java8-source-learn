@@ -14,8 +14,8 @@
     }
   “Object类是class层次结构的根，每个class都以Object类作为其超类。所有的对象，包括数组都实现了Object类的方法。”  这两句
 话几乎被每个学习Java语言的人所熟知，但如何理解这两句话也困扰了好多人。我开始理解这两句话的时候有三个疑问：一、新建一个没
-有继承其它类的类，java.lang.Object是如何成为该新创建类的默认父类的？二、新建一个继承其它类的类，该新建类的父类是谁？
-三、新建一个类，可以显示继承java.lang.Object？
+有继承其它类的类，java.lang.Object是如何成为该新创建类的默认父类的？二、一个继承其它类的类，该类的父类是谁？
+三、新建一个类，可以显式继承java.lang.Object？
 ## 一、新建一个没有继承其它类的类，java.lang.Object是如何成为该新创建类的默认父类的？
   参考文献[1]中的作者给出了一个观点：
   * （1）、在编译源代码时，当遇到没有父类的类时，编译器会将其指定一个默认的父类（一般为Object），而虚拟机在处理到这个类
@@ -32,7 +32,62 @@
                 System.out.println(new Person().toString());
             }
         }
-## 常用方法分析
+  对Person类进行编译后的Person.class文件进行反编译为：
+  
+    public class Person
+    {
+      public static void main(String[] args)
+      {
+        System.out.println(new Person().toString());
+      }
+    }
+  从反编译后源码中可以看出，编译器并没有给Person类指定一个默认的父类（Object类）。通过证明后，我们可以猜测Java虚拟机当遇
+到一个类没有父类的类时，就会自动将这个类看成是Object类的子类。
+## 二、一个继承其它类的类，该类的父类是谁？
+    public class Father {
+        private String name;
+    
+        public Father() {
+        }
+    
+        public Father(String name) {
+            this.name = name;
+        }
+    }
+    public class Son extends Father{
+        private String nickname;
+    
+        public Son(String nickname) {
+            super();
+            this.nickname = nickname;
+        }
+    }
+  因为Son类有其直接的父类Father类，所以Object类为Son类的间接父类。而Object类为Father类的直接父类。
+## 三、新建一个类，可以显式继承java.lang.Object？
+    public class Mokey extends Object{
+      private String name;
+      private double weight;
+    
+      public Mokey(String name, double weight) {
+          this.name = name;
+          this.weight = weight;
+      }
+    }
+  答案是肯定的，但是没有必要。对Mokey类的源码编译后的Mokey.class文件进行反编译为：
+  
+    public class Mokey
+    {
+      private String name;
+      private double weight;
+    
+      public Mokey(String name, double weight)
+      {
+        this.name = name;
+        this.weight = weight;
+      }
+    }
+  通过对比Mokey类的源码和反编译后的源码，可以看出编译器会将继承的Object类去掉。
+## 四、常用方法分析
 ### getClass()
     /**
      * Returns the runtime class of this {@code Object}. The returned
