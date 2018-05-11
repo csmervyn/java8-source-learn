@@ -1,5 +1,5 @@
 本文中的源码源于JDK 8
-# Object类的定义
+## 1.Object类的定义
     /**
      * Class {@code Object} is the root of the class hierarchy.
      * Every class has {@code Object} as a superclass. All objects,
@@ -13,7 +13,7 @@
       ...
     }
 “Object类是class层次结构的根，每个class都以Object类作为其超类。所有的对象，包括数组都实现了Object类的方法。”  这两句话几乎被每个学习Java语言的人所熟知，但如何理解这两句话也困扰了好多人。我开始理解这两句话的时候有三个疑问：①新建一个没有继承其它类的类，java.lang.Object是如何成为该新创建类的默认父类的？②一个继承其它类的类，该类和Object类的关系？③新建一个类，可以显式继承java.lang.Object？
-## 1.新建一个没有继承其它类的类，java.lang.Object是如何成为该新创建类的默认父类的？
+## 2.新建一个没有继承其它类的类，java.lang.Object是如何成为该新创建类的默认父类的？
 参考文献[1]中的作者给出了一个观点：
 * （1）、在编译源代码时，当遇到没有父类的类时，编译器会将其指定一个默认的父类（一般为Object），而虚拟机在处理到这个类时，由于这个类已经有一个默认的父类了，因此，VM仍然会按着常规的方法来处理每一个类。对于这种情况，从编译后的二进制角度来看，所有的类都会有一个父类<sup>[1]</sup>。
 * （2）、编译器仍然按着实际代码进行编译，并不会做额外的处理。如果一个类没有显式地继承于其他的类，编译后的代码仍然没有父类。然后由虚拟机运行二进制代码时，当遇到没有父类的类时，就会自动将这个类看成是Object类的子类（一般这类语言的默认父类都是Object）<sup>[1]</sup>。
@@ -36,7 +36,7 @@
         }
         }
 从反编译后源码中可以看出，编译器并没有给Person类指定一个默认的父类（Object类）。通过证明，我们可以猜测Java虚拟机当遇到一个类没有父类的类时，就会自动将这个类看成是Object类的子类。
-## 2.一个继承其它类的类，该类的父类是谁？
+## 3.一个继承其它类的类，该类的父类是谁？
     public class Father {
         private String name;
     
@@ -56,7 +56,7 @@
         }
     }
 因为Son类有其直接的父类Father类，所以Object类为Son类的间接父类。而Object类为Father类的直接父类。
-## 3.新建一个类，可以显式继承java.lang.Object？
+## 4.新建一个类，可以显式继承java.lang.Object？
     public class Mokey extends Object{
       private String name;
       private double weight;
@@ -80,7 +80,7 @@
       }
     }
 通过对比Mokey类的源码和反编译后的源码，可以看出编译器会将继承的Object类去掉。
-## 4.常用方法分析
+## 5.常用方法分析
 ### getClass()
     /**
      * Returns the runtime class of this {@code Object}. The returned
@@ -552,7 +552,7 @@ getClass方法是一个本地方法，返回一个对象的运行时类。该方
      */
     public final native void notifyAll();
 这是一个本地方法，该方法将其所持有的锁上等待的所有线程唤醒。            
-# 参考文献
+## 6.参考文献
 * [1] http://www.blogjava.net/nokiaguy/archive/2008/05/06/198711.html
 * [2] JoshuaBloch. Effective Java中文版.第2版[M]. 机械工业出版社, 2009.
 
